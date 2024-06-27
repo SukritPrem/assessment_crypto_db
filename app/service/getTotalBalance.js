@@ -1,18 +1,16 @@
 const { pool } = require("../index");
+const { database } = require("../database/database");
 
 async function getTotalBalance(req, res) {
   try {
-    const result = await pool.query(
-      "SELECT SUM(balance) AS total_balance FROM cryptocurrency;"
-    );
-
+    const dB = new database();
+    const result = await dB.getTotalBalance();
     if (result.rowCount === 0) {
       return res.status(404).json({ error: "Not found" });
     }
-
-    res.status(200).json(result.rows);
+    return res.status(200).json(result.rows);
   } catch (err) {
-    res.status(500).json({ error: "Internal Server Error" });
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 }
 

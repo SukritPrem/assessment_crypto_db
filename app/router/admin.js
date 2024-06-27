@@ -12,7 +12,9 @@ const {
   validateAdminParamsAddExchangeRate,
 } = require("../middleware/admin");
 
-router.get("/totalBalance", getTotalBalance);
+router.get("/totalBalance", async (req, res) => {
+  await getTotalBalance(req, res);
+});
 
 router.put(
   "/:crypto/:change/:balance",

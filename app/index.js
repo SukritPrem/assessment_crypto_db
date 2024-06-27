@@ -18,7 +18,11 @@ module.exports = { pool };
 
 app.use("/", require("./router/user"));
 app.use("/admin", require("./router/admin"));
-
-app.listen(port, () => {
+app.get("/test", (req, res) => {
+  return res.send("HEllo");
+});
+app.listen(port, async () => {
   console.log(`app listening at http://localhost:${port}`);
 });
+
+module.exports = { app };
