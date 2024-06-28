@@ -76,4 +76,4 @@
   node index.js
 ```
 ## Database
-![Alt text](./database/img/db_Item.jpg)
+![Alt text](./database/img/db_ltem.jpg)
