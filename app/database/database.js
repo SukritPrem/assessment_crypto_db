@@ -20,9 +20,44 @@ class database {
   }
 
   async getTotalBalance() {
-    console.log("dbs");
     return this.pool.query(
       "SELECT SUM(balance) AS total_balance FROM cryptocurrency;"
+    );
+  }
+
+  async findUserAndNameCryptoInWalletTable(nameUser, nameCryto) {
+    return this.pool.query(
+      "SELECT * FROM Wallet WHERE username = $1 AND namecrypto = $2;",
+      [nameUser, nameCryto]
+    );
+  }
+
+  async findLastedExchangeRateInExchangeRateTable(req) {
+    return this.pool.query(
+      "SELECT * FROM exchangeRate WHERE cryptoFrom = $1 AND cryptoTo = $2 ORDER BY updated_at DESC LIMIT 1;",
+      [req.body["namecryptoFrom"], req.body["namecryptoTo"]]
+    );
+  }
+
+  async updateAmountByUserNameAndCrytoNameInWalletTable(
+    amount,
+    username,
+    namecrypto
+  ) {
+    return this.pool.query(
+      "UPDATE Wallet SET amount = $1 WHERE username = $2 AND namecrypto = $3;",
+      [amount, username, namecrypto]
+    );
+  }
+
+  async insertUsernameAndCryptoAndAmountInWalletTable(
+    username,
+    namecrypto,
+    amount
+  ) {
+    return this.pool.query(
+      "INSERT INTO Wallet (username, namecrypto, amount) VALUES ($1, $2, $3);",
+      [username, namecrypto, amount]
     );
   }
 }

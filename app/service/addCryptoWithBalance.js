@@ -1,4 +1,3 @@
-const { pool } = require("../index");
 const { database } = require("../database/database");
 
 async function addCrytoWithBalance(req, res) {
