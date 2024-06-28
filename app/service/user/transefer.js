@@ -7,8 +7,11 @@ async function user1TranferUser2(req, res) {
       req.params.user1,
       req.body["namecryptoFrom"]
     );
+
     if (user1.rowCount == 0) {
-      return res.status(404).json({ error: "Not found" });
+      return res
+        .status(404)
+        .json({ error: "Not found crypto In Wallet user1" });
     }
 
     if (user1.rows[0].amount - req.body["amount"] < 0) {
