@@ -64,14 +64,14 @@
 
 
 # Module Database
-  * Start Server
+  * create database
   * Database
-## Start Server
+## Create database
 1. run docker compose in /database/database
 ```bash
   docker compose up
 ```
-2. run Server in /database
+2. run create database in /database
 ```bash
   node index.js
 ```
