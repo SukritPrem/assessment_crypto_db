@@ -3,7 +3,6 @@ const { getMockReq, getMockRes } = require("@jest-mock/express");
 const { getTotalBalance } = require("../service/getTotalBalance"); // Assuming your function is in the same directory
 const { database } = require("../database/database");
 const supertest = require("supertest");
-const { app } = require("../index");
 
 jest.mock("../database/database"); // Mock the database module
 

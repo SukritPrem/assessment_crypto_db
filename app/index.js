@@ -1,6 +1,6 @@
 const express = require("express");
-const { param, validationResult } = require("express-validator");
 const { Pool } = require("pg");
+
 const app = express();
 const port = 3000;
 

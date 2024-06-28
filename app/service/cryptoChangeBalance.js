@@ -1,12 +1,9 @@
-const { pool } = require("../index");
+const { database } = require("../database/database");
 
 async function cryptoChageBalance(req, res) {
   try {
-    const crypto = await pool.query(
-      "SELECT * FROM cryptocurrency WHERE namecrypto = $1;",
-      [req.params.crypto]
-    );
-
+    const dB = new database();
+    const crypto = await dB.findCryptoByNameCrypto(req.params.crypto);
     if (crypto.rowCount === 0) {
       return res.status(404).json({ error: "Not found" });
     }
@@ -24,9 +21,9 @@ async function cryptoChageBalance(req, res) {
     if (crypto.rows[0].balance < 0)
       res.status(400).json("After action crypto is negative can't update");
 
-    const result = await pool.query(
-      "UPDATE cryptocurrency SET balance = $1 WHERE namecrypto = $2;",
-      [crypto.rows[0].balance, req.params.crypto]
+    const result = await dB.updateBalanceByNameCrypto(
+      crypto.rows[0].balance,
+      req.params.crypto
     );
 
     if (result.rowCount === 0) {

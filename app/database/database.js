@@ -25,6 +25,20 @@ class database {
     );
   }
 
+  async addCrytoWithBalance(req) {
+    return this.pool.query(
+      "INSERT INTO cryptocurrency (namecrypto, balance) VALUES ($1, $2);",
+      [req.params.crypto, req.params.balance]
+    );
+  }
+
+  async addExchangeRate(req) {
+    return this.pool.query(
+      "INSERT INTO exchangerate (cryptoFrom, cryptoTo, rate) VALUES ($1, $2, $3);",
+      [req.params.From, req.params.To, req.params.Rate]
+    );
+  }
+
   async findUserAndNameCryptoInWalletTable(nameUser, nameCryto) {
     return this.pool.query(
       "SELECT * FROM Wallet WHERE username = $1 AND namecrypto = $2;",
@@ -58,6 +72,20 @@ class database {
     return this.pool.query(
       "INSERT INTO Wallet (username, namecrypto, amount) VALUES ($1, $2, $3);",
       [username, namecrypto, amount]
+    );
+  }
+
+  async findCryptoByNameCrypto(nameCryto) {
+    return this.pool.query(
+      "SELECT * FROM cryptocurrency WHERE namecrypto = $1;",
+      [nameCryto]
+    );
+  }
+
+  async updateBalanceByNameCrypto(balance, namecrypto) {
+    return this.pool.query(
+      "UPDATE cryptocurrency SET balance = $1 WHERE namecrypto = $2;",
+      [balance, namecrypto]
     );
   }
 }

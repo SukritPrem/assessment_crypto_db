@@ -1,11 +1,9 @@
-const { pool } = require("../index");
+const { database } = require("../database/database");
 
 async function addExchangeRate(req, res) {
   try {
-    const result = await pool.query(
-      "INSERT INTO exchangerate (cryptoFrom, cryptoTo, rate) VALUES ($1, $2, $3);",
-      [req.params.From, req.params.To, req.params.Rate]
-    );
+    const dB = new database();
+    const result = await dB.addExchangeRate(req);
     if (result.rowCount === 0) {
       return res.status(404).json({ error: "Not found" });
     }

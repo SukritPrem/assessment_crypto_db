@@ -18,6 +18,7 @@
     "@types/jest": "^29.5.12",
     "@types/node": "^20.14.8",
     "jest": "^29.7.0",
+    "jest-http-mock": "^1.1.0",
     "supertest": "^7.0.0"
   }
 }
