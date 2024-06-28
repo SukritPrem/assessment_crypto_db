@@ -54,4 +54,6 @@
   "amount": 1.975
 }
 ```
+## Database
+![Alt text](./app/img/db_Crypto.jpg)
 
