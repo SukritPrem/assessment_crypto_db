@@ -50,6 +50,14 @@
 ```
 #### User can transfer same cryptocurrency to other.
 * PUT /:user1/transfer/:user2
+* Request Body
+```json
+{
+  "namecryptoFrom":"Bitcoin",
+  "amount":1,
+  "namecryptoTo":"Ethereum"
+}
+```
 * Response Body
 ```json
 {
