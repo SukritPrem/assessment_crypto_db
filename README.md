@@ -11,6 +11,10 @@
 ```bash
   node index.js
 ```
+3. run test in /app
+```bash
+  npm test
+```
 ## Story
 #### Admin can increase and decrease user cryptocurrency balance.
 * POST /admin/:crypto/:change/:balance
