@@ -57,3 +57,19 @@
 ## Database
 ![Alt text](./app/img/db_Crypto.jpg)
 
+
+
+# Module Database
+  * Start Server
+  * Database
+## Start Server
+1. run docker compose in /database/database
+```bash
+  docker compose up
+```
+2. run Server in /database
+```bash
+  node index.js
+```
+## Database
+![Alt text](./database/img/db_Item.jpg)
