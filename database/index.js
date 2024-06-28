@@ -138,7 +138,7 @@ const ItemPrice = sequelize.define(
 
 Username.hasMany(CodeItem, { foreignKey: "username" });
 GameItem.hasMany(CodeItem, { foreignKey: "item" });
-GameItem.hasMany(ItemPrice, { foreignKey: "item" });
+GameItem.hasOne(ItemPrice, { foreignKey: "item" });
 
 sequelize
   .sync()
