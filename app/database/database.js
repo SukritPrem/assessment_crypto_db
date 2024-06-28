@@ -2,7 +2,6 @@ const { Pool } = require("pg");
 
 class database {
   constructor() {
-    console.log("create constructor");
     this.pool = new Pool({
       user: "postgres",
       host: "127.0.0.1",
